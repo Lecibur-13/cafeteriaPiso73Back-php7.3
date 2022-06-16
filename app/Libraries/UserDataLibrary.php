@@ -5,6 +5,7 @@ namespace App\Libraries;
 use App\Model\MoneyCashModel;
 use App\Model\User;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Psr\Log\LoggerInterface;
 
@@ -17,7 +18,11 @@ class UserDataLibrary
         $this->log = $logger;
     }
 
-    public function getUserData($request): JsonResponse
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function getUserData($request)
     {
         try {
             $user =  User::where('email', $request->email)

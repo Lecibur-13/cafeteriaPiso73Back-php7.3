@@ -15,7 +15,10 @@ class SystemSettingsLibrary
         $this->log = $logger;
     }
 
-    public function login(): JsonResponse
+    /**
+     * @return JsonResponse
+     */
+    public function login()
     {
         try {
 

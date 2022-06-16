@@ -26,7 +26,7 @@ class LoginLibrary
      * @param Request $request
      * @return JsonResponse
      */
-    public function login(Request $request): JsonResponse
+    public function login(Request $request)
     {
         try{
             $email = $request->input('email');
@@ -70,7 +70,7 @@ class LoginLibrary
         }
     }
 
-    public function logout(Request $request): JsonResponse
+    public function logout(Request $request)
     {
         try{
             if (Auth::check()) {

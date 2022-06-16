@@ -17,10 +17,15 @@ class TransactionLibrary
         $this->log = $logger;
     }
 
-    public function saveTransaction($request): JsonResponse
+    /**
+     * @param $request
+     * @return JsonResponse
+     */
+    public function saveTransaction($request)
     {
 
         try {
+            $pointToAdd = $request->discount + $request->moneyCash;
             HistoryTransactionModel::create([
                 "total" => $request->total,
                 "discount" => $request->discount,
@@ -30,7 +35,7 @@ class TransactionLibrary
             ]);
 
             User::where('id', $request->userId)->update([
-                'points' => $request->currentPoints - $request->points
+                'points' => ($request->currentPoints - $request->points) + $pointToAdd
             ]);
             MoneyCashModel::where('user_id', $request->userId)->update([
                 'value' => $request->currentMoneyCash  - $request->moneyCash
