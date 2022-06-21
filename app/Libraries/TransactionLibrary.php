@@ -21,7 +21,7 @@ class TransactionLibrary
      * @param $request
      * @return JsonResponse
      */
-    public function saveTransaction($request)
+    public function saveTransaction($request): JsonResponse
     {
 
         try {

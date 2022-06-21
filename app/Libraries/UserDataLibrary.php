@@ -22,7 +22,7 @@ class UserDataLibrary
      * @param Request $request
      * @return JsonResponse
      */
-    public function getUserData($request)
+    public function getUserData($request): JsonResponse
     {
         try {
             $user =  User::where('email', $request->email)

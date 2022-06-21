@@ -2,6 +2,7 @@
 
 namespace App\Libraries;
 
+use App\Model\SystemSettingsModel;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Psr\Log\LoggerInterface;
@@ -18,14 +19,15 @@ class SystemSettingsLibrary
     /**
      * @return JsonResponse
      */
-    public function login()
+    public function login(): JsonResponse
     {
         try {
-
+            $settings = SystemSettingsModel::all();
             return response()->json([
                 "status" => true,
                 "settings" => [
                     "APP_NAME" => env("APP_NAME"),
+                    "system_settings" => $settings,
                 ]]);
 
         } catch (Exception $e) {

@@ -24,7 +24,7 @@ class TransactionController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function saveTransaction(Request $request)
+    public function saveTransaction(Request $request): JsonResponse
     {
         return $this->TransactionLibrary->saveTransaction($request);
     }
